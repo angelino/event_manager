@@ -12,7 +12,11 @@ test/tmp
 test/version_tmp
 tmp
 
+output/*.html
+
 # YARD artifacts
 .yardoc
 _yardoc
 doc/
+
+.DS_Store
