@@ -10,6 +10,10 @@ def clean_zipcode(zipcode)
   zipcode.to_s.rjust(5, '0')[0..4]
 end
 
+def clean_phone_number(phone_number)
+  phone_number.to_s.gsub(/\W+/, '')
+end
+
 def legislators_by_zipcode(zipcode)
   Sunlight::Congress::Legislator.by_zipcode(zipcode)
 end
@@ -32,6 +36,9 @@ contents.each do |row|
   id = row[0]
   name = row[:first_name]
   zipcode = clean_zipcode(row[:zipcode])
+  phone_number = clean_phone_number(row[:homephone])
+
+  puts "#{id} #{name} #{zipcode} #{phone_number}"
 
   legislators = legislators_by_zipcode(zipcode)
 
